@@ -10,7 +10,6 @@ PROVISION:
     # set "enabled" or "disabled" to controll startup of services
     - { service: "cron",    status: "enabled" }
     - { service: "dnsmasq", status: "enabled" }
-    - { service: "postfix", status: "enabled" }
 
 WEB:
   vhost:
@@ -19,13 +18,6 @@ WEB:
 DNS:
   domain:
     - { domain: ".docker", address: "127.0.0.1" }
-
-MAIL:
-  aliases:
-    - { user: "root", destination: "root@example.com" }
-  conf:
-    - { variable: "inet_interfaces", value: "loopback-only" }
-    # - { variable: "relayhost", value: "foobar" }
 
 PHP:
   fpm:

@@ -12,6 +12,7 @@
 FROM nginx
 
 RUN apt-get update && apt-get install -y net-tools
+RUN sudo apt-get install php7.0-pgsql
 
 ADD conf/nginx/vhost.conf     /opt/docker/vhost.conf
 ADD ssl/*                     /etc/nginx/ssl/
