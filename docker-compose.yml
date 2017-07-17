@@ -29,7 +29,6 @@ app:
     - etc/environment.yml
     - etc/environment.development.yml
 
-
 #######################################
 # PostgreSQL server
 #######################################
