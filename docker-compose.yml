@@ -1,0 +1,88 @@
+#######################################
+# PHP application Docker container
+#######################################
+app:
+  build: .
+  dockerfile: Dockerfile
+  links:
+    - postgres
+    - elasticsearch
+    - redis
+    - memcached
+  ports:
+    - "80:80"
+    - "443:443"
+  volumes:
+    - ./app/:/app/
+    - ./tmp/debug/:/tmp/debug/
+    - ./:/docker/
+  volumes_from:
+    - storage
+  # cap and privileged needed for slowlog
+  cap_add:
+    - SYS_PTRACE
+  privileged: true
+  environment:
+    VIRTUAL_HOST: neos.docker # Change this if you need another hostname for your nginx reverse proxy (dinghy)
+    VIRTUAL_PORT: 80
+  env_file:
+    - etc/environment.yml
+    - etc/environment.development.yml
+
+
+#######################################
+# PostgreSQL server
+#######################################
+postgres:
+  build: docker/postgres/
+  ports:
+    - 15432:5432
+  volumes_from:
+    - storage
+  env_file:
+    - etc/environment.yml
+    - etc/environment.development.yml
+
+#######################################
+# Elasticsearch
+#######################################
+elasticsearch:
+  build: docker/elasticsearch/
+  ports:
+    - 19200:9200
+    - 19300:9300
+  volumes_from:
+    - storage
+  env_file:
+    - etc/environment.yml
+    - etc/environment.development.yml
+
+#######################################
+# Redis
+#######################################
+redis:
+  build: docker/redis/
+  volumes_from:
+    - storage
+  env_file:
+    - etc/environment.yml
+    - etc/environment.development.yml
+
+#######################################
+# Memcached
+#######################################
+memcached:
+  build: docker/memcached/
+  volumes_from:
+    - storage
+  env_file:
+    - etc/environment.yml
+    - etc/environment.development.yml
+
+#######################################
+# Storage
+#######################################
+storage:
+  build: docker/storage/
+  volumes:
+    - /storage

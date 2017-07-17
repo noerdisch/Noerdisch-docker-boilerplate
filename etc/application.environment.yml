@@ -1,0 +1,17 @@
+---
+
+DOCKER_ENVIRONMENT:
+  # Application
+  TYPO3_CONTEXT:   "{{ lookup('env','TYPO3_CONTEXT') }}"
+  FLOW_CONTEXT:   "{{ lookup('env','FLOW_CONTEXT') }}"
+  FLOW_REWRITEURLS: "{{ lookup('env','FLOW_REWRITEURLS') }}"
+
+  SYMFONY_ENV:     "{{ lookup('env','SYMFONY_ENV') }}"
+  SYMFONY_DEBUG:   "{{ lookup('env','SYMFONY_DEBUG') }}"
+
+  # General
+  CLI_SCRIPT:          "{{ lookup('env','CLI_SCRIPT') }}"
+
+  # Postgres
+  POSTGRES_USER:       "{{ lookup('env','POSTGRES_USER') }}"
+  POSTGRES_PASSWORD:   "{{ lookup('env','POSTGRES_PASSWORD') }}"
