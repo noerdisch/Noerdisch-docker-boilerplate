@@ -1,3 +1,10 @@
+<p align="center">
+    <img src="https://cdn.rawgit.com/markusguenther/abe70d34f4a4621aed0ef504c5d0192b/raw/5bf0f3df328e58ba7aad067a56cbd1c15ef69491/logo_full.svg" width="300">
+</p>
+
+[![Libraries.io for GitHub](https://img.shields.io/librariesio/github/noerdisch/Noerdisch-docker-boilerplate.svg?style=flat-square)](https://github.com/noerdisch/Noerdisch-docker-boilerplate)
+[![Twitter Follow](https://img.shields.io/twitter/follow/noerdisch.svg?style=social&label=Follow&style=flat-square)](https://twitter.com/noerdisch)
+
 # Dockerized Neos project boilerplate
 
 This Boilerplate is heavyly inspried by the work of https://webdevops.io.
